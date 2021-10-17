@@ -1,0 +1,28 @@
+class Numbers
+{
+    function void number()
+    {
+        do Output.moveCursor(18, 3);  //row, col
+        do Output.printString("0");
+        do Output.moveCursor(18, 7);  //row, col
+        do Output.printString("1");
+        do Output.moveCursor(18, 11);  //row, col
+        do Output.printString("2");
+        do Output.moveCursor(18, 14);  //row, col
+        do Output.printString("3");
+        do Output.moveCursor(18, 18);  //row, col
+        do Output.printString("4");
+        do Output.moveCursor(18, 22);  //row, col
+        do Output.printString("5");
+        do Output.moveCursor(18, 26);  //row, col
+        do Output.printString("6");
+        
+        return;
+    }
+
+    method void dispose()
+    {
+       	do Memory.deAlloc(this);
+       	return;
+    }
+}

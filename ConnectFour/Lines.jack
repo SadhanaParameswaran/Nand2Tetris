@@ -1,0 +1,33 @@
+class Lines
+{
+    function void draw()
+    {
+        do Screen.setColor(true);
+
+        do Screen.drawRectangle(10,0,14,179);
+        do Screen.drawRectangle(40,0,44,179);
+        do Screen.drawRectangle(70,0,74,179);
+        do Screen.drawRectangle(100,0,104,179);
+        do Screen.drawRectangle(130,0,134,179);
+        do Screen.drawRectangle(160,0,164,179);
+        do Screen.drawRectangle(190,0,194,179);
+        do Screen.drawRectangle(220,0,224,179);
+
+
+        do Screen.drawRectangle(10,30,224,30);
+        do Screen.drawRectangle(10,60,224,60);
+        do Screen.drawRectangle(10,90,224,90);
+        do Screen.drawRectangle(10,120,224,120);
+        do Screen.drawRectangle(10,150,224,150);
+	    do Screen.drawRectangle(10,180,225,189);
+
+
+        return;
+    }
+
+    method void dispose()
+    {
+       	do Memory.deAlloc(this);
+       	return;
+    }
+}
