@@ -1,0 +1,645 @@
+class game
+{
+    static Array five,four,three,two,one,zero;
+    static int player;
+    function void connectFour()
+    {
+        var int input,i;
+        let five=Array.new(7);
+        let four=Array.new(7);
+        let three=Array.new(7);
+        let two=Array.new(7);
+        let one=Array.new(7);
+        let zero=Array.new(7);
+        let i=0;
+        while(i<7)
+	    {
+       	    let five[i]=0;
+            let four[i]=0;
+            let three[i]=0;
+            let two[i]=0;
+            let one[i]=0;
+            let zero[i]=0;
+            let i=i+1;
+	    }
+        let player=1;
+        while((game.player1()=false)&(game.player40()=false))
+        {
+            if(player=1)
+            {
+                do Output.moveCursor(3, 40);  //row, col
+                do Output.printString("Player ");
+                do Output.moveCursor(3, 49);  //row, col
+                do Output.printInt(1);
+                do Output.moveCursor(4, 40);
+                do Output.printString("Enter column 0-6:");
+                do Output.moveCursor(5, 40);
+                let input=Keyboard.readInt("");
+
+                do game.columninput(input);
+                do game.checkwheredraw(input);
+                if(game.player1()=true)
+                {
+                    do Output.moveCursor(10, 40);
+                    do Output.printString("Player 1 wins");
+                }
+                let player=2;
+            }
+            else
+            {
+                do Output.moveCursor(3, 40);  //row, col
+                do Output.printString("Player ");
+                do Output.moveCursor(3, 49);  //row, col
+                do Output.printInt(2);
+                do Output.moveCursor(4, 40);
+                do Output.printString("Enter column 0-6:");
+                do Output.moveCursor(5, 40);
+                let input=Keyboard.readInt("");
+            
+                do game.columninput(input);
+                do game.checkwheredraw(input);
+                if(game.player40()=true)
+                {
+                    do Output.moveCursor(10, 40);
+                    do Output.printString("Player 2 wins");
+                }
+                let player=1;
+            }
+        }
+	    return;
+    }
+    function void checkwheredraw(int pos)
+    {   
+        var int row;
+            if(zero[pos]=1)
+            {
+                let row=0;
+                do game.draw1(pos,row);
+            }
+            if(zero[pos]=40)
+            {
+                let row=0;
+                do game.draw40(pos,row);
+            }
+            //---------------------------------------------
+            if(one[pos]=1)
+            {
+                let row=1;
+                do game.draw1(pos,row);
+            }
+            if(one[pos]=40)
+            {
+                let row=1;
+                do game.draw40(pos,row);
+            }
+            //---------------------------------------------
+            if(two[pos]=1)
+            {
+                let row=2;
+                do game.draw1(pos,row);
+            }
+            if(two[pos]=40)
+            {
+                let row=2;
+                do game.draw40(pos,row);
+            }
+            //---------------------------------------------
+            if(three[pos]=1)
+            {
+                let row=3;
+                do game.draw1(pos,row);
+            }
+            if(three[pos]=40)
+            {
+                let row=3;
+                do game.draw40(pos,row);
+            }
+            //---------------------------------------------
+            if(four[pos]=1)
+            {
+                let row=4;
+                do game.draw1(pos,row);
+            }
+            if(four[pos]=40)
+            {
+                let row=4;
+                do game.draw40(pos,row);
+            }
+            //---------------------------------------------
+            if(five[pos]=1)
+            {
+                let row=5;
+                do game.draw1(pos,row);
+            }
+            if(five[pos]=40)
+            {
+                let row=5;
+                do game.draw40(pos,row);
+            }
+            //---------------------------------------------           
+                                
+    
+        return;
+    }
+
+
+    function void draw1(int pos,int row)
+    {      
+        do Screen.drawRectangle((20+(pos*30)),(160-(row*30)),(24+(pos*30)),(164-(row*30)));
+        do Screen.drawRectangle((20+(pos*30)),(170-(row*30)),(24+(pos*30)),(174-(row*30)));
+        do Screen.drawRectangle((25+(pos*30)),(165-(row*30)),(29+(pos*30)),(169-(row*30)));
+        do Screen.drawRectangle((30+(pos*30)),(160-(row*30)),(34+(pos*30)),(164-(row*30)));
+        do Screen.drawRectangle((30+(pos*30)),(170-(row*30)),(34+(pos*30)),(174-(row*30)));  
+        return;
+    }
+    function void draw40(int pos,int row)
+    {
+        do Screen.drawRectangle((25+(pos*30)),(160-(row*30)),(29+(pos*30)),(164-(row*30)));
+        do Screen.drawRectangle((20+(pos*30)),(165-(row*30)),(24+(pos*30)),(169-(row*30)));
+        do Screen.drawRectangle((30+(pos*30)),(165-(row*30)),(34+(pos*30)),(169-(row*30)));
+        do Screen.drawRectangle((25+(pos*30)),(170-(row*30)),(29+(pos*30)),(174-(row*30)));
+        do Screen.drawRectangle((25+(pos*30)),(165-(row*30)),(29+(pos*30)),(169-(row*30)));
+        return;
+    }
+
+    function boolean player1()
+    {
+        var int i;
+        //To check row winning of player 1
+        let i=0;
+        while(i<4)
+        {
+            if((zero[i]+zero[i+1]+zero[i+2]+zero[i+3])=4)
+            {
+                return true;
+            }
+            //-----------------------------------------------------------------
+            if((one[i]+one[i+1]+one[i+2]+one[i+3])=4)
+            {
+                return true;
+            }
+            //----------------------------------------------------------------
+            if((two[i]+two[i+1]+two[i+2]+two[i+3])=4)
+            {
+                return true;
+            }
+            //----------------------------------------------------------------
+            if((three[i]+three[i+1]+three[i+2]+three[i+3])=4)
+            {
+                return true;
+            }
+            //----------------------------------------------------------------
+            if((four[i]+four[i+1]+four[i+2]+four[i+3])=4)
+            {
+                return true;
+            }
+            //----------------------------------------------------------------
+            if((five[i]+five[i+1]+five[i+2]+five[i+3])=4)
+            {
+                return true;
+            }
+            let i=i+1;
+        }
+        //End of row checking of player 1
+        //--------------------------------------------------------------------------------------------
+
+        //----------------------------------------------------------------------------------------------
+        //To check column winning of player 1
+        let i=0;
+        while(i<7)
+        {
+            if(zero[i]+one[i]+two[i]+three[i]=4)
+            {
+                return true;
+            }
+            let i=i+1;
+        }
+
+        let i=0;
+        while(i<7)
+        {
+            if(one[i]+two[i]+three[i]+four[i]=4)
+            {
+                return true;
+            }
+            let i=i+1;
+        }
+
+        let i=0;
+        while(i<7)
+        {
+            if(two[i]+three[i]+four[i]+five[i]=4)
+            {
+                return true;
+            }
+            let i=i+1;
+        }
+        //end of column check for player 1
+        //------------------------------------------------------------------------------------------------
+
+        //------------------------------------------------------------------------------------------------
+        //to check left to right diagonals of player 1
+        
+        if((two[0]+three[1]+four[2]+five[3])=4)
+        {
+            return true;
+        }
+        if((one[0]+two[1]+three[2]+four[3])=4)
+        {
+            return true;
+        }
+        if((zero[0]+one[1]+two[2]+three[3])=4)
+        {
+            return true;
+        }
+        if((zero[1]+one[2]+two[3]+three[4])=4)
+        {
+            return true;
+        }
+        if((zero[2]+one[3]+two[4]+three[5])=4)
+        {
+            return true;
+        }
+        if((zero[3]+one[4]+two[5]+three[6])=4)
+        {
+            return true;
+        }
+        if((two[1]+three[2]+four[3]+five[4])=4)
+        {
+            return true;
+        }
+        if((one[1]+two[2]+three[3]+four[4])=4)
+        {
+            return true;
+        }
+        if((two[2]+three[3]+four[4]+five[5])=4)
+        {
+            return true;
+        }
+        if((two[3]+three[4]+four[5]+five[6])=4)
+        {
+            return true;
+        }
+        if((one[2]+two[3]+three[4]+four[5])=4)
+        {
+            return true;
+        }
+        if((one[3]+two[4]+three[5]+four[6])=4)
+        {
+            return true;
+        }
+        //end of right to left diagonal check
+        //--------------------------------------------------------------------------------
+
+        //--------------------------------------------------------------------------------
+        // to check right to left diagonals for player 1
+        if((zero[6] + one[5] + two[4] + three[3])=4)
+        {
+            return true;
+        }
+        if((zero[5] + one[4] + two[3] + three[4])=4)
+        {
+            return true;
+        }
+        if((zero[4] + one[3] + two[2] + three[1])=4)
+        {
+            return true;
+        }
+        if((zero[3] + one[2] + two[1] + three[0])=4)
+        {
+            return true;
+        }
+        if((one[6] + two[5] + three[4] + four[3])=4)
+        {
+            return true;
+        }
+        if((two[6] + three[5] + four[4] + five[3])=4)
+        {
+            return true;
+        }
+        if((two[5] + three[4] + four[3] + five[2])=4)
+        {
+            return true;
+        }
+        if((one[5] + two[4] + three[3] + four[2])=4)
+        {
+            return true;
+        }
+        if((two[4] + three[3] + four[2] + five[1])=4)
+        {
+            return true;
+        }
+        if((one[4] + two[3] + three[2] + four[1])=4)
+        {
+            return true;
+        }
+        if((two[3] + three[2] + four[1] + five[0])=4)
+        {
+            return true;
+        }
+        if((one[3] + two[2] + three[1] + four[0])=4)
+        {
+            return true;
+        }
+        //end of left to right diagonal check
+        //--------------------------------------------------------------------------------
+
+        return false;
+    }
+
+
+    function boolean player40()
+    {
+        var int i;
+        let i=0;
+        //-------------------------------------------------------------------------------------------------
+        //To check row winning of player 40
+        while(i<4)
+        {
+            if((zero[i]+zero[i+1]+zero[i+2]+zero[i+3])=160)
+            {
+                return true;
+            }
+            //-----------------------------------------------------------------
+            if((one[i]+one[i+1]+one[i+2]+one[i+3])=160)
+            {
+                return true;
+            }
+            //----------------------------------------------------------------
+            if((two[i]+two[i+1]+two[i+2]+two[i+3])=160)
+            {
+                return true;
+            }
+            //----------------------------------------------------------------
+            if((three[i]+three[i+1]+three[i+2]+three[i+3])=160)
+            {
+                return true;
+            }
+            //----------------------------------------------------------------
+            if((four[i]+four[i+1]+four[i+2]+four[i+3])=160)
+            {
+                return true;
+            }
+            //----------------------------------------------------------------
+            if((five[i]+five[i+1]+five[i+2]+five[i+3])=160)
+            {
+                return true;
+            }
+            let i=i+1;
+        }
+        //End of row checking of player 40
+        //--------------------------------------------------------------------------------------------
+
+        //--------------------------------------------------------------------------------------------
+        //To check column winning of player 40
+        let i=0;
+        while(i<7)
+        {
+            if(zero[i]+one[i]+two[i]+three[i]=160)
+            {
+                return true;
+            }
+            let i=i+1;
+        }
+
+        let i=0;
+        while(i<7)
+        {
+            if(one[i]+two[i]+three[i]+four[i]=160)
+            {
+                return true;
+            }
+            let i=i+1;
+        }
+
+        let i=0;
+        while(i<7)
+        {
+            if(two[i]+three[i]+four[i]+five[i]=160)
+            {
+                return true;
+            }
+            let i=i+1;
+        }
+        //end of column check for player 40
+        //---------------------------------------------------------------------------------------------
+
+        //------------------------------------------------------------------------------------------------
+        //to check left to right diagonals of player 2
+        
+        if((two[0]+three[1]+four[2]+five[3])=160)
+        {
+            return true;
+        }
+        if((one[0]+two[1]+three[2]+four[3])=160)
+        {
+            return true;
+        }
+        if((zero[0]+one[1]+two[2]+three[3])=160)
+        {
+            return true;
+        }
+        if((zero[1]+one[2]+two[3]+three[4])=160)
+        {
+            return true;
+        }
+        if((zero[2]+one[3]+two[4]+three[5])=160)
+        {
+            return true;
+        }
+        if((zero[3]+one[4]+two[5]+three[6])=160)
+        {
+            return true;
+        }
+        if((two[1]+three[2]+four[3]+five[4])=160)
+        {
+            return true;
+        }
+        if((one[1]+two[2]+three[3]+four[4])=160)
+        {
+            return true;
+        }
+        if((two[2]+three[3]+four[4]+five[5])=160)
+        {
+            return true;
+        }
+        if((two[3]+three[4]+four[5]+five[6])=160)
+        {
+            return true;
+        }
+        if((one[2]+two[3]+three[4]+four[5])=160)
+        {
+            return true;
+        }
+        if((one[3]+two[4]+three[5]+four[6])=160)
+        {
+            return true;
+        }
+        //end of right to left diagonal check
+        //--------------------------------------------------------------------------------
+
+        //--------------------------------------------------------------------------------
+        // to check right to left diagonals for player 40
+        if((zero[6] + one[5] + two[4] + three[3])=160)
+        {
+            return true;
+        }
+        if((zero[5] + one[4] + two[3] + three[4])=160)
+        {
+            return true;
+        }
+        if((zero[4] + one[3] + two[2] + three[1])=160)
+        {
+            return true;
+        }
+        if((zero[3] + one[2] + two[1] + three[0])=160)
+        {
+            return true;
+        }
+        if((one[6] + two[5] + three[4] + four[3])=160)
+        {
+            return true;
+        }
+        if((two[6] + three[5] + four[4] + five[3])=160)
+        {
+            return true;
+        }
+        if((two[5] + three[4] + four[3] + five[2])=160)
+        {
+            return true;
+        }
+        if((one[5] + two[4] + three[3] + four[2])=160)
+        {
+            return true;
+        }
+        if((two[4] + three[3] + four[2] + five[1])=160)
+        {
+            return true;
+        }
+        if((one[4] + two[3] + three[2] + four[1])=160)
+        {
+            return true;
+        }
+        if((two[3] + three[2] + four[1] + five[0])=160)
+        {
+            return true;
+        }
+        if((one[3] + two[2] + three[1] + four[0])=160)
+        {
+            return true;
+        }
+        //end of left to right diagonal check
+        //--------------------------------------------------------------------------------
+
+        return false;
+    }
+
+    function void columninput(int input)
+    {
+        var int i;
+        let i=0;
+        while(i<7)
+        {
+            
+            //input 0 to 6
+            if(input=i)
+            {
+                if(zero[i]=0)
+                {
+                    if(player=1)
+                    {
+                        let zero[i]=1;
+                    }
+                    else
+                    {
+                        let zero[i]=40;
+                    }
+                }
+                else
+                {
+                    if(one[i]=0)
+                    {
+                         if(player=1)
+                        {
+                            let one[i]=1;
+                        }
+                        else
+                        {
+                            let one[i]=40;
+                        }
+                    }
+                    else
+                    {
+                        if(two[i]=0)
+                        {
+                             if(player=1)
+                            {
+                                let two[i]=1;
+                            }
+                            else
+                            {
+                                let two[i]=40;
+                            }
+                        }
+                        else
+                        {
+                            if(three[i]=0)
+                            {
+                                 if(player=1)
+                                {
+                                    let three[i]=1;
+                                }
+                                else
+                                {
+                                    let three[i]=40;
+                                }
+                            }
+                            else
+                            {
+                                if(four[i]=0)
+                                {
+                                     if(player=1)
+                                    {
+                                        let four[i]=1;
+                                    }
+                                    else
+                                    {
+                                        let four[i]=40;
+                                    }               
+                                }
+                                else
+                                {
+                                    if(five[i]=0)
+                                    {
+                                         if(player=1)
+                                        {
+                                            let five[i]=1;
+                                        }
+                                        else
+                                        {
+                                            let five[i]=40;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        do Output.moveCursor(18, 20);
+                                        do Output.printString("Invalid entry cannot place above 5th row");
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            //----------------------------------------------------------------
+            let i=i+1;
+        }
+        return;
+    }
+
+    method void dispose()
+    {
+        do Memory.deAlloc(this);
+        return;
+    }       
+}
