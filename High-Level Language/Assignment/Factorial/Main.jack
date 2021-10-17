@@ -1,0 +1,21 @@
+class Main 
+{	
+	function void main() 
+	{
+		var int number, i, fact;
+
+		let number = Keyboard.readInt("Enter the number for which the factorial should be found: ");
+
+		let i = 1;
+		let fact = 1;
+		while(i < (number+1)) 
+		{
+			let fact = fact*i;
+			let i = i + 1;
+		}
+
+		do Output.printString("The factorial of the given number is: ");
+		do Output.printInt(fact);
+		return;
+	}
+}

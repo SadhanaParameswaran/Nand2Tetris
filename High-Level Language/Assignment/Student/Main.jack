@@ -1,0 +1,24 @@
+class Main
+{
+	function void main()
+	{
+		var Student s1,s2,s3,s4,s5;
+		let s1=Student.new(001,"Lily","AIE");
+		let s2=Student.new(002,"Ramu","MEE");
+		let s3=Student.new(003,"Neha","CSE");
+		let s4=Student.new(004,"Jiya","EEE");
+		let s5=Student.new(005,"Teja","ECE");
+		do s1.print();
+		do s2.print();
+		do s3.print();
+		do s4.print();
+		do s5.print();
+		do s1.dispose();
+		do s2.dispose();
+		do s3.dispose();
+		do s4.dispose();
+		do s5.dispose();
+		
+		return;
+	}
+}
