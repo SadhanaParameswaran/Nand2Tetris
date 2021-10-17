@@ -1,0 +1,51 @@
+class List 
+{
+    field int data;          
+    field List next;        
+    constructor List new(int car, List cdr) 
+    {
+        let data = car;      
+        let next = cdr;      
+        return this;
+    }
+    method int getData() 
+    { 
+        return data; 
+    }
+    method int getNext() 
+    { 
+        return next; 
+    }
+    method void print() 
+    {
+        var List current;    
+        let current = this;  
+        while (~(current = null)) 
+        {
+            do Output.printInt(current.getData());
+            do Output.printChar(32); 
+            let current = current.getNext();
+        }
+        return;
+    }
+    method void dispose() 
+    {
+       	if (~(next = null)) 
+        {
+              do next.dispose();
+        }
+        do Memory.deAlloc(this);
+        return;
+    }
+    function int gcd(int a, int b) 
+    {
+   	var int r;
+   	while (~(b = 0)) 
+        {            
+             let r = a - (b * (a / b));  
+             let a = b; let b = r;
+        }
+        return a;
+    }     
+   
+}

@@ -1,0 +1,57 @@
+class Main
+{
+	function void main() 
+	{
+      		var Array a; 
+      		var int length;
+    		var int i, j, temp;
+
+	        let length = 10;
+      		let a = Array.new(length); // constructs the array
+     
+     	 	let i = 0;
+		while (i < length)
+		{
+			let a[i] = Keyboard.readInt("Enter a number: ");
+			let i = i + 1;
+		}
+
+		let i = 0;
+      		while (i < length) 
+		{
+			let j = i + 1;
+			while (j < length)
+			{
+				if(a[i] > a[j])
+				{
+					let temp = a[i];
+					let a[i] = a[j];
+					let a[j] = temp;
+				}
+				let j = j + 1;
+			}
+			let i = i + 1;
+      		}
+
+		let i = 0;
+      		do Output.printString("The sorted array in ascending order is: ");
+		while (i < length)
+		{
+			do Output.printInt(a[i]);
+			do Output.printString(" ");
+			let i = i + 1;
+		}
+
+		let i = (length - 1);
+		do Output.println();
+      		do Output.printString("The sorted array in decending order is: ");
+		while (i > -1)
+		{
+			do Output.printInt(a[i]);
+			do Output.printString(" ");
+			let i = i - 1;
+		}
+
+      		return;
+   	}	
+}

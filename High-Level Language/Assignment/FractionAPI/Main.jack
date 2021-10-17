@@ -1,0 +1,42 @@
+// For displaying details
+// Main file
+class Main 
+{
+   function void main() 
+   {
+      var Fraction a, b, c, d;        
+      let a = Fraction.new(9,5);  
+      let b = Fraction.new(2,3);  
+      let c = a.plus(b);  // Computes c = a + b
+      //do c.print();       
+      do Output.println();       
+      let d=a.mult(b); 
+      do Output.println();
+      do a.print();
+      do Output.printString(" comparing with ");  
+      do b.print();
+      do Output.println();
+      do a.comp(b);
+      do Output.println();
+      do b.print();
+      do Output.printString(" comparing with ");  
+      do a.print();  
+      do Output.println();
+      do b.comp(a);
+      do Output.println();
+      do a.print();
+      do Output.printString(" comparing with ");  
+      do a.print();  
+      do Output.println();
+      do a.comp(a);
+      do Output.println();
+      do Output.printString("Multiplication of Fraction1 and Fraction2: ");  
+      do d.print();
+      do Output.println();
+      do a.dispose();
+      do b.dispose();
+      do c.dispose();
+      do d.dispose();
+      return;
+   }
+}

@@ -1,0 +1,62 @@
+// This file is part of www.nand2tetris.org
+// and the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+// File name: projects/09/List/Main.jack
+
+/** Demonstrates the use of the List abstraction. */
+class Main 
+{
+   	function void main() 
+	{
+		var List L,e,o;
+		var int i,a,b;
+		let i = 0;
+		while (i<10)
+		{
+			if(L=null)
+			{
+				let a=Keyboard.readInt("Enter a number: ");
+				let L=List.new(a,null);
+				if (List.gcd(a,2)=2)
+				{
+					let e=List.new(a,null);
+				}
+				else
+				{
+					let o=List.new(a,null);
+				}
+			}
+			else
+			{
+				let b=Keyboard.readInt("Enter a number: ");
+				let L=List.new(b,L);
+				if(List.gcd(b,2)=2)
+				{
+					let e=List.new(b,e);
+				}
+				else
+				{
+					let o=List.new(b,o);
+				}
+			
+			}
+			let i=i+1;
+		}
+		do Output.printString("The list is");
+		do Output.println();
+		do L.print();
+		do Output.println();
+		do Output.printString("The even numbers are");
+		do Output.println();
+		do e.print();
+		do Output.println();
+		do Output.printString("The odd numbers are");
+		do Output.println();
+		do o.print();
+		do L.dispose();
+		do e.dispose();
+		do o.dispose();
+     		return;
+	}
+   
+}
